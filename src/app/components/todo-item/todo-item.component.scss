@@ -1,0 +1,25 @@
+$color: rgb(233, 233, 233);
+
+@mixin test() {
+ background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+}
+.del {
+    @include test();
+   text-align: center;
+   padding: 2px;
+   float: right;
+}
+
+.todo{
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #{$color};
+    border-bottom: 1px solid gray;
+}
+
+.is-completed{
+ text-decoration: line-through;
+}
