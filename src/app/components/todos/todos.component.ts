@@ -26,17 +26,11 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(initData());
     this.todosSubscription = this.todosState$
-      .pipe(
-        map(x => {
-          this.todos = x.data;
-        })
-      )
-      .subscribe();
+      .subscribe(x => this.todos = x.data);
   }
 
   deleteTodo(todo: Todo) {
-    console.log(todo);
-    this.store.dispatch(removeTodo({ todo }));
+    this.store.dispatch(requestRemoveTodo({ todo }));
   }
 
   addTodo(todo: any) {

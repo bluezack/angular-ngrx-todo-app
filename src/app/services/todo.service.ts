@@ -15,14 +15,14 @@ const httpOptions = {
 })
 
 export class TodoService {
-  urlTodos: string = 'https://jsonplaceholder.typicode.com/todos';
+  urlTodos: string = 'http://localhost:1337/todos';
   limit: string = '?_limit=5'
   constructor(private http: HttpClient) {
 
   }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.urlTodos + this.limit);
+    return this.http.get<Todo[]>(this.urlTodos);
   }
 
   toggleTodoCompleted(todo): Observable<any> {

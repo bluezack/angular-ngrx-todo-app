@@ -28,7 +28,10 @@ export class TodoEffects {
                     map(todo => {
                         return addTodo({ todo });
                     }),
-                    catchError(() => EMPTY)
+                    catchError((e) => {
+                        console.log(e);
+                        return EMPTY
+                    })
                 ))
     ));
 
@@ -38,10 +41,11 @@ export class TodoEffects {
             (action) => this.todoService.deleteTodo(action.todo)
                 .pipe(
                     map(todo => {
-                        return removeTodo({ todo });
+                        return removeTodo({ todo: action.todo });
                     }),
                     catchError(() => EMPTY)
-                ))
+                )
+        )
     ));
 
     constructor(
